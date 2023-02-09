@@ -38,7 +38,7 @@ Route::middleware('auth')->group(function () {
         The verified middleware will be used if you decide to enable email verification.
 */
 
-Route::resource('chrips', ChripController::class)
+Route::resource('chirps', ChirpController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
