@@ -22,4 +22,10 @@ class Chirp extends Model
     protected $fillable = [
         'message',
     ];
+
+    // Add relation so can display the name of the Chirp's author
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
