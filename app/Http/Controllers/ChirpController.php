@@ -14,8 +14,14 @@ class ChirpController extends Controller
      */
     public function index()
     {
-        //
-        return view('chirps.index');
+        /* 
+            Validation when get data chirps
+            Every users can view own chrips 
+
+        */
+        return view('chirps.index', [
+            'chirps' => Chirp::with('user')->latest()->get(),
+        ]);
     }
 
     /**
