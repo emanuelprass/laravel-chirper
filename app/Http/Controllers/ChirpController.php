@@ -36,7 +36,18 @@ class ChirpController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /*
+            Create validation to store chrip
+                Value of text-box must filled
+                Value of text-box is string
+                Maximal charater of text-box is 255
+        */
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        $request->user()->chirps()->create($validated);
+        return redirect(route('chirps.index'));
     }
 
     /**
