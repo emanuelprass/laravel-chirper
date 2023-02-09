@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,5 +28,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+/* 
+    Add new routing to ChripController
+        The index route will display our form and a listing of Chirps.
+        The store route will be used for saving new Chirps.
+    Add middleware to these routing
+        The auth middleware ensures that only logged-in users can access the route.
+        The verified middleware will be used if you decide to enable email verification.
+*/
+
+Route::resource('chrips', ChripController::class)
+    ->only(['index', 'store'])
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';
