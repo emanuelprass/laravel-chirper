@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // create an relation between table user and chirp, relation between these 2 tables is one to many
+    public function chirps()
+    {
+        return $this->hasMany(Chirp::class);
+    }
 }
