@@ -13,3 +13,9 @@ Use this command to create notification
 ```
 php artisan make:notification NewChirp
 ```
+
+## Event
+Event are a great way to decouple various aspect from you aplication, since a single even can have a multiple listener that don't depend on each other.
+```
+php artisan make:event ChirpCreated
+```
