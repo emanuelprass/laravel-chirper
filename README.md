@@ -19,3 +19,10 @@ Event are a great way to decouple various aspect from you aplication, since a si
 ```
 php artisan make:event ChirpCreated
 ```
+
+## Create event listener
+After dispatching an event then we'll listen for that event and send our notification
+
+```
+php artisan make:listener SendChirpCreatedNotifications --event=ChirpCreated
+```
