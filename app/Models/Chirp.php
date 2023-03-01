@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Events\ChirpCreated;
 
 class Chirp extends Model
 {
@@ -21,6 +22,10 @@ class Chirp extends Model
     */
     protected $fillable = [
         'message',
+    ];
+
+    protected $dispatchesEvent = [
+        'created' => ChirpCreated::class,
     ];
 
     // Add relation so can display the name of the Chirp's author
